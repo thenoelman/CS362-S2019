@@ -1237,6 +1237,10 @@ int cardEffect_great_hall(int currentPlayer, struct gameState *state, int handPo
 	//+1 Actions
 	state->numActions++;
 
+	//beginning of bug code
+	state->numActions++;
+	//end of bug code
+
 	//discard card from hand
 	discardCard(handPos, currentPlayer, state, 0);
 	return 0;

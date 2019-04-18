@@ -1200,7 +1200,8 @@ int cardEffect_smithy(int currentPlayer, struct gameState *state, int handPos)
 {
 	int i;
 	//+3 Cards
-	for (i = 0; i < 3; i++)
+	//bug- I changed it to draw 5 cards instead of 3
+	for (i = 0; i < 5; i++)
 	{
 		drawCard(currentPlayer, state);
 	}
@@ -1213,7 +1214,12 @@ int cardEffect_smithy(int currentPlayer, struct gameState *state, int handPos)
 int cardEffect_village(int currentPlayer, struct gameState *state, int handPos)
 {
 	//+1 Card
-	drawCard(currentPlayer, state);
+	//commenting out the expected code
+	//drawCard(currentPlayer, state);
+
+	//beginning of bug code
+	discardCard(handPos, currentPlayer, state, 1);
+	//end of bug code
 
 	//+2 Actions
 	state->numActions = state->numActions + 2;

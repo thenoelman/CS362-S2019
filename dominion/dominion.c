@@ -1222,6 +1222,10 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 	
   return -1;
 }
+int cardDrawnFunction(struct gameState *state, int currentPlayer, int firstInt, int secondInt)
+{
+	return state->hand[currentPlayer][state->handCount[currentPlayer] - 1];
+}
 
 int discardCard(int handPos, int currentPlayer, struct gameState *state, int trashFlag)
 {

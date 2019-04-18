@@ -1240,9 +1240,16 @@ int cardEffect_steward(int currentPlayer, struct gameState *state, int handPos, 
 {
 	if (choice1 == 1)
 	{
+		//start of bug
+		//trash 2 cards in hand
+		discardCard(choice2, currentPlayer, state, 1);
+		discardCard(choice3, currentPlayer, state, 1);
+		//end of bug
+
+		//expected code
 		//+2 cards
-		drawCard(currentPlayer, state);
-		drawCard(currentPlayer, state);
+		/*drawCard(currentPlayer, state);
+		drawCard(currentPlayer, state);*/
 	}
 	else if (choice1 == 2)
 	{
@@ -1251,9 +1258,16 @@ int cardEffect_steward(int currentPlayer, struct gameState *state, int handPos, 
 	}
 	else
 	{
+		//start of bug
+		//+2 cards
+		drawCard(currentPlayer, state);
+		drawCard(currentPlayer, state);
+		//end of bug
+
+		//expected code
 		//trash 2 cards in hand
-		discardCard(choice2, currentPlayer, state, 1);
-		discardCard(choice3, currentPlayer, state, 1);
+		/*discardCard(choice2, currentPlayer, state, 1);
+		discardCard(choice3, currentPlayer, state, 1);*/
 	}
 
 	//discard card from hand

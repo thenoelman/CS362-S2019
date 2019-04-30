@@ -6,6 +6,11 @@
 #include "rngs.h"
 #include <stdlib.h>
 
-int main5() {
+#define TESTNAME "unittest1"
+
+int main() {
+
+	printf("testing 1 2 3\n");
+
     return 0;
 }

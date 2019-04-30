@@ -40,12 +40,14 @@ all: playdom player
 
 unittestresults: unittest1.c dominion.o rngs.o
 	gcc -o unittest1 unittest1.c -g  dominion.o rngs.o $(CFLAGS)
+	gcc -o unittest2 unittest2.c -g  dominion.o rngs.o $(CFLAGS)
 
 	echo "Noel Yunginger" >> unittestresults.out
 	echo "cs362" >> unittestresults.out
 	echo "HW3" >> unittestresults.out
 	echo "" >> unittestresults.out
 	./unittest1 >> unittestresults.out
+	./unittest2 >> unittestresults.out
 
 clean:
 	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe unittest1 unittestresults.out

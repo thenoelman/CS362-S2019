@@ -10,7 +10,7 @@
 
 int main() {
 
-	printf("testing 1 2 3\n");
+	printf("Test results for: %s\n\n", TESTNAME);
 
     return 0;
 }

@@ -6,6 +6,6 @@
 #include "rngs.h"
 #include <stdlib.h>
 
-int main() {
+int main3() {
     return 0;
 }

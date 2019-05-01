@@ -41,8 +41,18 @@ int main() {
 	cardEffect_smithy(thisPlayer, &testG, handpos);
 	printf("after smithy and discard hand count = %d\n", testG.handCount[thisPlayer]);
 	printf("expected = %d\n", G.handCount[thisPlayer] + newCards - discarded);
+	if (testG.handCount[thisPlayer] != (G.handCount[thisPlayer] + newCards - discarded))
+	{
+		printf("----- TEST FAILED - 3 cards were not drawn\n");
+	}
+	else
+	{
+		printf("+++++ TEST PASSED\n");
+	}
+	assert(testG.handCount[thisPlayer] != (G.handCount[thisPlayer] + newCards - discarded));
 
 	printf("\n");
+
 	/*Test 2  */
 	printf("Test 2: 3 cards should come from his own pile.\n");
 

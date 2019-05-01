@@ -61,5 +61,10 @@ unittestresults: unittest1.c dominion.o rngs.o
 	./cardtest3 >> unittestresults.out
 	./cardtest4 >> unittestresults.out
 
+	echo "" >> unittestresults.out
+	echo "gcov results" >> unittestresults.out
+	echo "" >> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+
 clean:
 	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe unittest1 unittestresults.out

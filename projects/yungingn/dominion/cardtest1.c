@@ -37,9 +37,15 @@ int main() {
 	// copy the game state to a test case
 	memcpy(&testG, &G, sizeof(struct gameState));
 	choice1 = 1;
-	printf("before smithy- hand count = %d\n", testG.handCount[thisPlayer]);
+	int beforeSmithyHandCount = testG.handCount[thisPlayer];
+	printf("before smithy- handCount = %d\n", beforeSmithyHandCount);
+	int deckCountBeforeSmithy = testG.deckCount[thisPlayer];
+	
+	//play the smithy
 	cardEffect_smithy(thisPlayer, &testG, handpos);
+
 	printf("after smithy and discard hand count = %d\n", testG.handCount[thisPlayer]);
+	
 	printf("expected = %d\n", G.handCount[thisPlayer] + newCards - discarded);
 	if (testG.handCount[thisPlayer] != (G.handCount[thisPlayer] + newCards - discarded))
 	{
@@ -55,6 +61,24 @@ int main() {
 
 	/*Test 2  */
 	printf("Test 2: 3 cards should come from his own pile.\n");
+
+	printf("before smithy- deckCount = %d\n", deckCountBeforeSmithy);
+
+	printf("after smithy- deckCount = %d\n", testG.deckCount[thisPlayer]);
+	assert(deckCountBeforeSmithy != testG.deckCount[thisPlayer]);
+
+	int drawnCards = testG.handCount[thisPlayer] + discarded - beforeSmithyHandCount;
+	printf("drawnCards = %d\n", drawnCards);
+
+	if((deckCountBeforeSmithy - drawnCards) == testG.deckCount[thisPlayer])
+	{
+		printf("+++++ TEST PASSED\n");
+	}
+	else
+	{
+		printf("----- TEST FAILED - cards in deck do not add up\n");
+	}
+	assert((deckCountBeforeSmithy - drawnCards) == testG.deckCount[thisPlayer]);
 
 	printf("\n");
 	/*Test 3  */

@@ -48,10 +48,6 @@ unittestresults: unittest1.c dominion.o rngs.o
 	gcc -o cardtest3 cardtest3.c -g  dominion.o rngs.o $(CFLAGS)
 	gcc -o cardtest4 cardtest4.c -g  dominion.o rngs.o $(CFLAGS)
 
-	echo "Noel Yunginger" >> unittestresults.out
-	echo "cs362" >> unittestresults.out
-	echo "HW3" >> unittestresults.out
-	echo "" >> unittestresults.out
 	./unittest1 >> unittestresults.out
 	./unittest2 >> unittestresults.out
 	./unittest3 >> unittestresults.out
@@ -68,3 +64,4 @@ unittestresults: unittest1.c dominion.o rngs.o
 
 clean:
 	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe unittest1 unittestresults.out
+	rm -f cardtest1 cardtest2 cardtest3 cardtest4 unittest1 unittest2 unittest3 unittest4

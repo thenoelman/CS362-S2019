@@ -8,7 +8,17 @@
 
 #define TESTNAME "unittest1"
 
+void printheaders()
+{
+	printf("Noel Yunginger\n");
+	printf("cs362\n");
+	printf("HW3\n\n");
+
+}
+
 int main() {
+
+	printheaders();
 
 	printf("Test results for: %s\n\n", TESTNAME);
 

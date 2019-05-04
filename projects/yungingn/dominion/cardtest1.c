@@ -194,9 +194,26 @@ int main() {
 	}
 	printf("\n");
 
-	printf("\n");
 	/*Test 4  */
 	printf("Test 4: No state change should occur to the victory card piles and kingdom card piles.\n");
+
+	printf("\n");
+	printf("Test 4a: Test that the supply count of curse matches\n");
+	printf("supply count before: curse= %d\n", testG.supplyCount[0]);
+	printf("supply count after: curse= %d\n", G.supplyCount[0]);
+	assert(testG.supplyCount[0] == G.supplyCount[0]);
+	if (testG.supplyCount[0] == G.supplyCount[0])
+	{
+		printf("+++++ TEST PASSED\n");
+		testPassed++;
+	}
+	else
+	{
+		printf("----- TEST FAILED - supply count of curse does not match\n");
+		testFailed++;
+	}
+	printf("\n");
+
 
 	/*End of cardtest1 */
 	printf("***** Summary results for: %s, %s *****\n", TESTNAME, CARDNAME);

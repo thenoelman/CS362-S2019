@@ -155,14 +155,23 @@ int main() {
 	//assert(totalCoinsBefore + 2 == totalCoinsAfter);
 	printf("\n");
 
-	/*for (int i = 0; i < G.deckCount[thisPlayer] - 1; i++)
-	{
-		printf("card %d = %d\n", i, G.deck[thisPlayer][i]);
-
-	}*/
-
 	/*Test 4  */
 	printf("Test 4: the other cards have been discarded\n");
+
+	printf("before adventurer- discardCount = %d\n", G.discardCount[thisPlayer]);
+
+	printf("after adventurer- discardCount = %d\n", testG.discardCount[thisPlayer]);
+
+	if (G.discardCount[thisPlayer] <= testG.discardCount[thisPlayer])
+	{
+		printf("+++++ TEST PASSED\n");
+		testPassed++;
+	}
+	else
+	{
+		printf("----- TEST FAILED - cards in deck do not add up\n");
+		testFailed++;
+	}
 
 	printf("\n");
 	/*End of cardtest2 */

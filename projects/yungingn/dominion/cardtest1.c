@@ -42,7 +42,8 @@ int main() {
 	int deckCountBeforeSmithy = testG.deckCount[thisPlayer];
 	
 	//play the smithy
-	cardEffect_smithy(thisPlayer, &testG, handpos);
+	//cardEffect_smithy(thisPlayer, &testG, handpos);
+	cardEffect(smithy, -1, -1, -1, &testG, 0, 0);
 
 	printf("after smithy and discard hand count = %d\n", testG.handCount[thisPlayer]);
 	

@@ -42,14 +42,14 @@ commonTestLibrary.o: dominion.h dominion.c rngs.o commonTestLibrary.h commonTest
 
 unittestresults: unittest1.c dominion.o rngs.o
 	gcc commonTestLibrary.c -c
-	gcc -o unittest1 unittest1.c -g  dominion.o rngs.o $(CFLAGS)
-	gcc -o unittest2 unittest2.c -g  dominion.o rngs.o $(CFLAGS)
-	gcc -o unittest3 unittest3.c -g  dominion.o rngs.o $(CFLAGS)
-	gcc -o unittest4 unittest4.c -g  dominion.o rngs.o $(CFLAGS)
-	gcc -o cardtest1 cardtest1.c -g  dominion.o rngs.o $(CFLAGS)
-	gcc -o cardtest2 cardtest2.c -g  dominion.o rngs.o $(CFLAGS)
-	gcc -o cardtest3 cardtest3.c -g  dominion.o rngs.o commonTestLibrary.o  $(CFLAGS)
-	gcc -o cardtest4 cardtest4.c -g  dominion.o rngs.o $(CFLAGS)
+	gcc -o unittest1 unittest1.c -g  dominion.o rngs.o commonTestLibrary.o $(CFLAGS)
+	gcc -o unittest2 unittest2.c -g  dominion.o rngs.o commonTestLibrary.o $(CFLAGS)
+	gcc -o unittest3 unittest3.c -g  dominion.o rngs.o commonTestLibrary.o $(CFLAGS)
+	gcc -o unittest4 unittest4.c -g  dominion.o rngs.o commonTestLibrary.o $(CFLAGS)
+	gcc -o cardtest1 cardtest1.c -g  dominion.o rngs.o commonTestLibrary.o $(CFLAGS)
+	gcc -o cardtest2 cardtest2.c -g  dominion.o rngs.o commonTestLibrary.o $(CFLAGS)
+	gcc -o cardtest3 cardtest3.c -g  dominion.o rngs.o commonTestLibrary.o $(CFLAGS)
+	gcc -o cardtest4 cardtest4.c -g  dominion.o rngs.o commonTestLibrary.o $(CFLAGS)
 
 	./unittest1 >> unittestresults.out
 	./unittest2 >> unittestresults.out

@@ -124,8 +124,8 @@ int main() {
 	printf("Test 3c: Test that the cards match\n");
 	for (int i = 0; i < G.deckCount[thisPlayer] - 1; i++)
 	{
-		printf("deck, other player, before, card %d = %d\n", i, G.deck[thisPlayer][i]);
-		printf("deck, other player, after, card %d = %d\n", i, testG.deck[thisPlayer][i]);
+		printf("deck, this player, before, card %d = %d\n", i, G.deck[thisPlayer][i]);
+		printf("deck, this player, after, card %d = %d\n", i, testG.deck[thisPlayer][i]);
 		assert(G.deck[thisPlayer][i] == testG.deck[thisPlayer][i]);
 
 		if (G.deck[thisPlayer][i] == testG.deck[thisPlayer][i])

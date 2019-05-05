@@ -646,7 +646,7 @@ int cardEffect_adventurer(int drawntreasure, struct gameState *state, int curren
 {
 	int temphand[MAX_HAND];
 
-	while (drawntreasure < 4) {
+	while (drawntreasure < 2) {
 		if (state->deckCount[currentPlayer] < 1) {//if the deck is empty we need to shuffle discard and add to deck
 			shuffle(currentPlayer, state);
 		}

@@ -58,22 +58,90 @@ int main() {
 		printf("+++++ TEST PASSED\n");
 		testPassed++;
 	}
-	assert(testG.handCount[thisPlayer] != (G.handCount[thisPlayer] + newCards - discarded));
+	assert(testG.handCount[thisPlayer] == (G.handCount[thisPlayer] + 2));
 
 	printf("\n");
 
 	/*Test 2  */
 	printf("Test 2: cards should come from his own pile.\n");
 
-	printf("before adventurer- deckCount = %d\n", deckCountBeforeAdventurer);
+	printf("before adventurer- deckCount = %d\n", G.deckCount[thisPlayer]);
 
 	printf("after adventurer- deckCount = %d\n", testG.deckCount[thisPlayer]);
-	//assert(deckCountBeforeAdventurer != testG.deckCount[thisPlayer]);
 
-	int drawnCards = testG.handCount[thisPlayer] + discarded - beforeAdventurerHandCount;
-	printf("drawnCards = %d\n", drawnCards);
+	printf("before adventurer- handCount = %d\n", G.handCount[thisPlayer]);
 
-	if ((deckCountBeforeAdventurer - drawnCards) == testG.deckCount[thisPlayer])
+	printf("after adventurer- handCount = %d\n", testG.handCount[thisPlayer]);
+
+
+	if ((G.deckCount[thisPlayer] - 2) == testG.deckCount[thisPlayer] && 
+		(G.handCount[thisPlayer] + 2) == testG.handCount[thisPlayer])
+	{
+		printf("+++++ TEST PASSED\n");
+		testPassed++;
+	}
+	else
+	{
+		printf("----- TEST FAILED - cards in deck and hand do not add up\n");
+		testFailed++;
+	}
+	/*assert((G.deckCount[thisPlayer] - 2) == testG.deckCount[thisPlayer] &&
+		(G.handCount[thisPlayer] + 2) == testG.handCount[thisPlayer]);*/
+
+	printf("\n");
+
+	/*Test 3  */
+	printf("Test 3: the 2 new treasure cards are in the player's hand\n");
+
+	printf("Testing here: after adventurer and discard hand count = %d\n", testG.handCount[thisPlayer]);
+
+	int i;
+	int coppersBefore = 0;
+	int coppersAfter = 0;
+	int silversBefore = 0;
+	int silversAfter = 0;
+	int goldsBefore = 0;
+	int goldsAfter = 0;
+
+	for (i = 0; i < testG.handCount[thisPlayer]; i++)
+	{
+		//printf("hand, this player, before, card %d = %d\n", i, G.hand[thisPlayer][i]);
+		//printf("hand, this player, after, card %d = %d\n", i, testG.hand[thisPlayer][i]);
+		
+		if (G.hand[thisPlayer][i] == 4)
+		{
+			coppersBefore++;
+		}
+		else if (G.hand[thisPlayer][i] == 5)
+		{
+			silversBefore++;
+		}
+		else if (G.hand[thisPlayer][i] == 6)
+		{
+			goldsBefore++;
+		}
+
+		if (testG.hand[thisPlayer][i] == 4)
+		{
+			coppersAfter++;
+		}
+		else if (testG.hand[thisPlayer][i] == 5)
+		{
+			silversAfter++;
+		}
+		else if (testG.hand[thisPlayer][i] == 6)
+		{
+			goldsAfter++;
+		}
+	}
+
+	int totalCoinsBefore = coppersBefore + silversBefore + goldsBefore;
+	int totalCoinsAfter = coppersAfter + silversAfter + goldsAfter;
+
+	printf("totalCoinsBefore = %d\n", totalCoinsBefore);
+	printf("totalCoinsAfter = %d\n", totalCoinsAfter);
+
+	if ((totalCoinsBefore + 2 ) == totalCoinsAfter)
 	{
 		printf("+++++ TEST PASSED\n");
 		testPassed++;
@@ -83,21 +151,15 @@ int main() {
 		printf("----- TEST FAILED - cards in deck do not add up\n");
 		testFailed++;
 	}
-	//assert((deckCountBeforeAdventurer - drawnCards) == testG.deckCount[thisPlayer]);
 
+	//assert(totalCoinsBefore + 2 == totalCoinsAfter);
 	printf("\n");
 
-	printf("test: %d\n", G.deckCount[thisPlayer]);
-	printf("test2: %d\n", G.handCount[thisPlayer]);
-
-	/*Test 3  */
-	printf("Test 3: the 2 new treasure cards are in the player's hand\n");
-
-	for (int i = 0; i < G.deckCount[thisPlayer] - 1; i++)
+	/*for (int i = 0; i < G.deckCount[thisPlayer] - 1; i++)
 	{
 		printf("card %d = %d\n", i, G.deck[thisPlayer][i]);
 
-	}
+	}*/
 
 	/*Test 4  */
 	printf("Test 4: the other cards have been discarded\n");

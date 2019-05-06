@@ -58,7 +58,7 @@ int main() {
 		printf("+++++ TEST PASSED\n");
 		testPassed++;
 	}
-	assert(testG.handCount[thisPlayer] == (G.handCount[thisPlayer] + 2));
+	//assert(testG.handCount[thisPlayer] == (G.handCount[thisPlayer] + 2));
 
 	printf("\n");
 

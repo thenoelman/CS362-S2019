@@ -646,7 +646,7 @@ int cardEffect_adventurer(int drawntreasure, struct gameState *state, int curren
 {
 	int temphand[MAX_HAND];
 
-	while (drawntreasure < 2) {
+	while (drawntreasure < 4) {
 		if (state->deckCount[currentPlayer] < 1) {//if the deck is empty we need to shuffle discard and add to deck
 			shuffle(currentPlayer, state);
 		}
@@ -684,10 +684,10 @@ int cardEffect_village(int currentPlayer, struct gameState *state, int handPos)
 {
 	//+1 Card
 	//commenting out the expected code
-	//drawCard(currentPlayer, state);
+	drawCard(currentPlayer, state);
 
 	//beginning of bug code
-	discardCard(handPos, currentPlayer, state, 1);
+	//discardCard(handPos, currentPlayer, state, 1);
 	//end of bug code
 
 	//+2 Actions

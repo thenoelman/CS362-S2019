@@ -18,10 +18,37 @@ int main() {
 	int thisPlayer = 0;
 	int testPassed = 0;
 	int testFailed = 0;
-	int cardDrawn;
-	int z = 0;// this is the counter for the temp hand
+	struct gameState G, testG;
+
+	int k[10] = { smithy, adventurer, village, gardens, great_hall, steward,
+			council_room, sea_hag, baron, minion };
+
+	// initialize a game state and player cards
+	initializeGame(numPlayers, k, seed, &G);
 
 	printf("Test results for: %s\n\n", TESTNAME);
+
+	printf("Testing to see if the coins decrease after a purchase of an estate\n");
+
+	printf("before purchase- coins = %d\n", G.coins);
+
+	// copy the game state to a test case
+	memcpy(&testG, &G, sizeof(struct gameState));
+
+	buyCard(estate, &testG);//test buying an estate
+
+	printf("after purchase- coins = %d\n", testG.coins);
+
+	if ((G.coins -2) == testG.coins)
+	{
+		printf("+++++ TEST PASSED\n");
+		testPassed++;
+	}
+	else
+	{
+		printf("----- TEST FAILED - cards in deck do not add up\n");
+		testFailed++;
+	}
 
 	printf("\n");
 	/*End of unittest2 */

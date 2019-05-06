@@ -14,7 +14,6 @@ int main() {
 	int newCards = 3;
 	int discarded = 1;
 
-	int handpos = 0;
 	int seed = 1000;
 	int numPlayers = 2;
 	int thisPlayer = 0;

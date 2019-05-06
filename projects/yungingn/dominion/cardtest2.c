@@ -10,17 +10,12 @@
 #define CARDNAME "adventurer"
 
 int main() {
-	int newCards = 3;
-	int discarded = 1;
 
-	int handpos = 0;
 	int seed = 1000;
 	int numPlayers = 2;
 	int thisPlayer = 0;
 	int testPassed = 0;
 	int testFailed = 0;
-	int cardDrawn;
-	int z = 0;// this is the counter for the temp hand
 
 	struct gameState G, testG;
 
@@ -41,7 +36,6 @@ int main() {
 
 	int beforeAdventurerHandCount = testG.handCount[thisPlayer];
 	printf("before adventurer- handCount = %d\n", beforeAdventurerHandCount);
-	int deckCountBeforeAdventurer = testG.deckCount[thisPlayer];
 
 	cardEffect(adventurer, -1, -1, -1, &testG, 0, 0);
 

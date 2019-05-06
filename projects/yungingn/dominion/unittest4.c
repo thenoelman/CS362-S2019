@@ -9,15 +9,11 @@
 #define TESTNAME "unittest4"
 
 int main() {
-	int newCards = 3;
-	int discarded = 1;
-
-	int handpos = 0;
 	int seed = 1000;
 	int numPlayers = 2;
-	int thisPlayer = 0;
 	int testPassed = 0;
 	int testFailed = 0;
+	int thisPlayer = 0;
 	struct gameState G, testG;
 
 	int k[10] = { smithy, adventurer, village, gardens, great_hall, steward,

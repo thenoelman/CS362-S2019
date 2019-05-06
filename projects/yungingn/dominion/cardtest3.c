@@ -68,7 +68,6 @@ int main() {
 	/*Test 2  */
 	printf("Test 2: Test that the player has gained 2 actions\n");
 
-
 	printf("Number of actions before drawing the village: %d\n", G.numActions);
 	printf("Number of actions after drawing the village: %d\n", testG.numActions);
 	assert(G.numActions + 2 == testG.numActions);
@@ -89,9 +88,10 @@ int main() {
 
 	noStateChangeTest(&testPassed, &testFailed, G, testG, thisPlayer);
 
-
 	/*Test 4  */
 	printf("Test 4: No state change should occur to the victory card piles and kingdom card piles\n");
+
+	noStateChangeVictoryKingdomTest(&testPassed, &testFailed, G, testG, thisPlayer);
 
 	printf("\n");
 	/*End of cardtest3 */

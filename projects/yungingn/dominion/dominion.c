@@ -684,10 +684,10 @@ int cardEffect_village(int currentPlayer, struct gameState *state, int handPos)
 {
 	//+1 Card
 	//commenting out the expected code
-	drawCard(currentPlayer, state);
+	//drawCard(currentPlayer, state);
 
 	//beginning of bug code
-	//discardCard(handPos, currentPlayer, state, 1);
+	discardCard(handPos, currentPlayer, state, 1);
 	//end of bug code
 
 	//+2 Actions
@@ -706,7 +706,7 @@ int cardEffect_great_hall(int currentPlayer, struct gameState *state, int handPo
 	state->numActions++;
 
 	//beginning of bug code
-	state->numActions++;
+	//state->numActions++;
 	//end of bug code
 
 	//discard card from hand

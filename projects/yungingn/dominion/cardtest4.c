@@ -36,8 +36,53 @@ int main() {
 	/*Test 1  */
 	printf("Test 1: Test that the player has drawn 1 card\n");
 
+	// copy the game state to a test case
+	memcpy(&testG, &G, sizeof(struct gameState));
+
+	printf("this player- handCount before = %d\n", G.handCount[thisPlayer]);
+	printf("this player- deckCount before = %d\n", G.deckCount[thisPlayer]);
+
+	//play the great_hall
+	cardEffect(great_hall, -1, -1, -1, &testG, 0, 0);
+
+	printf("this player- handCount after = %d\n", testG.handCount[thisPlayer]);
+	printf("this player- deckCount after (with discard) = %d\n", testG.deckCount[thisPlayer]);
+
+	if ((G.deckCount[thisPlayer] - 1) == testG.deckCount[thisPlayer] &&
+		G.handCount[thisPlayer] == testG.handCount[thisPlayer])//because of discarding
+	{
+		printf("+++++ TEST PASSED\n");
+		testPassed++;
+	}
+	else
+	{
+		printf("----- TEST FAILED - only 1 new card should be in handCount\n");
+		testFailed++;
+	}
+	/*assert((G.deckCount[thisPlayer] -1) == testG.deckCount[thisPlayer] &&
+		G.handCount[thisPlayer] == testG.handCount[thisPlayer]);*/
+
+	printf("\n");
+
 	/*Test 2  */
 	printf("Test 2: Test that the player has gained 1 action\n");
+
+	printf("Number of actions before drawing the great_hall: %d\n", G.numActions);
+	printf("Number of actions after drawing the great_hall: %d\n", testG.numActions);
+	assert(G.numActions + 1 == testG.numActions);
+
+	if (G.numActions + 1 == testG.numActions)
+	{
+		printf("+++++ TEST PASSED\n");
+		testPassed++;
+	}
+	else
+	{
+		printf("----- TEST FAILED - drawing a great_hall did not gain 1 actions\n");
+		testFailed++;
+	}
+
+	printf("\n");
 
 	/*Test 3  */
 	printf("Test 3: No state change should occur for other players\n");

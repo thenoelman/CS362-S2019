@@ -72,7 +72,8 @@ int main() {
 	int drawnCards = testG.handCount[thisPlayer] + discarded - beforeSmithyHandCount;
 	printf("drawnCards = %d\n", drawnCards);
 
-	if((deckCountBeforeSmithy - drawnCards) == testG.deckCount[thisPlayer])
+	if((deckCountBeforeSmithy - drawnCards) == testG.deckCount[thisPlayer] &&
+		deckCountBeforeSmithy == (testG.deckCount[thisPlayer] - 3))
 	{
 		printf("+++++ TEST PASSED\n");
 		testPassed++;

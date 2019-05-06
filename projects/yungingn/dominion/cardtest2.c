@@ -87,8 +87,6 @@ int main() {
 	/*Test 3  */
 	printf("Test 3: the 2 new treasure cards are in the player's hand\n");
 
-	printf("Testing here: after adventurer and discard hand count = %d\n", testG.handCount[thisPlayer]);
-
 	int i;
 	int coppersBefore = 0;
 	int coppersAfter = 0;

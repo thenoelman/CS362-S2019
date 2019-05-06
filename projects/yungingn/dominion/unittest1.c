@@ -17,10 +17,28 @@ void printheaders()
 }
 
 int main() {
+	int newCards = 3;
+	int discarded = 1;
+
+	int handpos = 0;
+	int seed = 1000;
+	int numPlayers = 2;
+	int thisPlayer = 0;
+	int testPassed = 0;
+	int testFailed = 0;
+	int cardDrawn;
+	int z = 0;// this is the counter for the temp hand
 
 	printheaders();
 
 	printf("Test results for: %s\n\n", TESTNAME);
+
+	printf("\n");
+	/*End of unittest1 */
+	printf("***** Summary results for: %s, *****\n", TESTNAME);
+	printf("***** %d Test(s) Passed *****\n", testPassed);
+	printf("***** %d Test(s) Failed *****\n", testFailed);
+	printf("***** End of %s *****\n\n", TESTNAME);
 
     return 0;
 }

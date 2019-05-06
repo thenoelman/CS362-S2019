@@ -87,10 +87,12 @@ int main() {
 	/*Test 3  */
 	printf("Test 3: No state change should occur for other players\n");
 
-	//noStateChangeTest(&testPassed, &testFailed, G, testG, thisPlayer);
+	noStateChangeTest(&testPassed, &testFailed, G, testG, thisPlayer);
 
 	/*Test 4  */
 	printf("Test 4: No state change should occur to the victory card piles and kingdom card piles\n");
+
+	noStateChangeVictoryKingdomTest(&testPassed, &testFailed, G, testG, thisPlayer);
 
 	printf("\n");
 	/*End of cardtest4 */

@@ -18,10 +18,42 @@ int main() {
 	int thisPlayer = 0;
 	int testPassed = 0;
 	int testFailed = 0;
-	int cardDrawn;
-	int z = 0;// this is the counter for the temp hand
+	struct gameState G, testG;
+
+	int k[10] = { smithy, adventurer, village, gardens, great_hall, steward,
+			council_room, sea_hag, baron, minion };
+
+	// initialize a game state and player cards
+	initializeGame(numPlayers, k, seed, &G);
 
 	printf("Test results for: %s\n\n", TESTNAME);
+
+	printf("Testing to see if the total cards increases after a purchase of an estate\n");
+
+	printf("before purchase- handCount = %d\n", G.handCount[thisPlayer]);
+	printf("before purchase- deckCount = %d\n", G.deckCount[thisPlayer]);
+	printf("before purchase- discardCount = %d\n", G.discardCount[thisPlayer]);
+
+	// copy the game state to a test case
+	memcpy(&testG, &G, sizeof(struct gameState));
+
+	buyCard(estate, &testG);//test buying an estate
+
+	printf("after purchase- handCount = %d\n", testG.handCount[thisPlayer]);
+	printf("after purchase- deckCount = %d\n", testG.deckCount[thisPlayer]);
+	printf("after purchase- discardCount = %d\n", testG.discardCount[thisPlayer]);
+
+	if ((G.handCount[thisPlayer] + G.deckCount[thisPlayer] + G.discardCount[thisPlayer] + 1)
+		== (testG.handCount[thisPlayer] + testG.deckCount[thisPlayer] + testG.discardCount[thisPlayer]))
+	{
+		printf("+++++ TEST PASSED\n");
+		testPassed++;
+	}
+	else
+	{
+		printf("----- TEST FAILED - cards in deck do not add up\n");
+		testFailed++;
+	}
 
 	printf("\n");
 	/*End of unittest4 */

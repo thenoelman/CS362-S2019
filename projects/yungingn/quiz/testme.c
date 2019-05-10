@@ -5,14 +5,38 @@
 
 char inputChar()
 {
-    // TODO: rewrite this function
-    return ' ';
+	int i;
+	int num;
+	for (i = 0; i < 9; i++) {
+		num = (rand() % 10);
+	}
+
+	switch (num)
+	{
+		case 1:
+			return '[';
+		case 2:
+			return '(';
+		case 3:
+			return '{';
+		case 4:
+			return ' ';
+		case 5:
+			return 'a';
+		case 6:
+			return 'x';
+		case 7:
+			return '}';
+		case 8:
+			return ')';
+		case 9:
+			return ']';
+	}
 }
 
 char *inputString()
 {
-    // TODO: rewrite this function
-    return "";
+    return "reset";
 }
 
 void testme()

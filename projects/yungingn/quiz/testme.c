@@ -7,9 +7,7 @@ char inputChar()
 {
 	int i;
 	int num;
-	for (i = 0; i < 9; i++) {
-		num = (rand() % 10);
-	}
+	num = (rand() % 9) + 1;
 
 	switch (num)
 	{
@@ -36,7 +34,29 @@ char inputChar()
 
 char *inputString()
 {
-    return "reset";
+	int i;
+	int num;
+	num = (rand() % 8) + 1;
+
+	switch (num)
+	{
+		case 1:
+			return "reset";
+		case 2:
+			return "nope";
+		case 3:
+			return "whatever";
+		case 4:
+			return "something";
+		case 5:
+			return "banana";
+		case 6:
+			return "apple";
+		case 7:
+			return "peaches";
+		case 8:
+			return "pineapple";
+	}
 }
 
 void testme()

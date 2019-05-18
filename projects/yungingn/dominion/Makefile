@@ -43,9 +43,15 @@ commonTestLibrary.o: dominion.h dominion.c rngs.o commonTestLibrary.h commonTest
 randomtestresults: dominion.o rngs.o
 	gcc commonTestLibrary.c -c
 	gcc -o randomtestcard1 randomtestcard1.c -g  dominion.o rngs.o commonTestLibrary.o $(CFLAGS)
+	gcc -o randomtestcard2 randomtestcard2.c -g  dominion.o rngs.o commonTestLibrary.o $(CFLAGS)
+	gcc -o randomtestadventurer randomtestadventurer.c -g  dominion.o rngs.o commonTestLibrary.o $(CFLAGS)
 
 	./randomtestcard1 >> randomtestresults.out
+	./randomtestcard2 >> randomtestresults.out
+	./randomtestadventurer >> randomtestresults.out
 	echo "" >> randomtestresults.out
+	echo "Gcov Results" >> randomtestresults.out
+	gcov dominion.c -b >> randomtestresults.out
 
 unittestresults: unittest1.c dominion.o rngs.o
 	gcc commonTestLibrary.c -c
@@ -74,4 +80,4 @@ unittestresults: unittest1.c dominion.o rngs.o
 
 clean:
 	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe unittest1 unittestresults.out
-	rm -f cardtest1 cardtest2 cardtest3 cardtest4 unittest1 unittest2 unittest3 unittest4 randomtestcard1
+	rm -f cardtest1 cardtest2 cardtest3 cardtest4 unittest1 unittest2 unittest3 unittest4 randomtestcard1 randomtestcard2 randomtestadventurer

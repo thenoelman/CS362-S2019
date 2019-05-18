@@ -8,8 +8,8 @@
 #include <string.h>
 #include <time.h>
 
-#define TESTNAME "randomtestcard1"
-#define CARDNAME "great_hall"
+#define TESTNAME "randomtestcard2"
+#define CARDNAME "village"
 
 int main() {
 	int seed = 1000;
@@ -38,7 +38,7 @@ int main() {
 	for (j = 0; j < numberOfRandomTests; j++)
 	{
 		//test drawCard with random decks
-		printf("Seed the Great Hall with random decks prior to playing the Great Hall\n");
+		printf("Seed the Village with random decks prior to playing the Village\n");
 
 		//randomize the deck
 		srand(time(NULL));
@@ -66,7 +66,7 @@ int main() {
 		memcpy(&testG, &G, sizeof(struct gameState));
 
 		//play the great_hall
-		cardEffect(great_hall, -1, -1, -1, &testG, 0, 0);
+		cardEffect(village, -1, -1, -1, &testG, 0, 0);
 
 		printf("\n");
 		/*Test 1  */
@@ -89,24 +89,23 @@ int main() {
 
 		printf("\n");
 		/*Test 2  */
-		printf("Test 2: Test that the player has gained 1 action\n");
+		printf("Test 2: Test that the player has gained 2 actions\n");
 
-		printf("Number of actions before drawing the great_hall: %d\n", G.numActions);
-		printf("Number of actions after drawing the great_hall: %d\n", testG.numActions);
-		//assert(G.numActions + 1 == testG.numActions);
+		printf("Number of actions before drawing the village: %d\n", G.numActions);
+		printf("Number of actions after drawing the village: %d\n", testG.numActions);
+		assert(G.numActions + 2 == testG.numActions);
 
-		if (G.numActions + 1 == testG.numActions)
+		if (G.numActions + 2 == testG.numActions)
 		{
 			printf("+++++ TEST PASSED\n");
 			testPassed++;
 		}
 		else
 		{
-			printf("----- TEST FAILED - drawing a great_hall did not gain 1 actions\n");
+			printf("----- TEST FAILED - drawing a village did not gain 2 actions\n");
 			testFailed++;
 		}
 
-		printf("\n");
 		/*Test 3  */
 		printf("Test 3: No state change should occur for other players\n");
 
@@ -120,7 +119,7 @@ int main() {
 
 	printf("\n");
 
-	/*End of randomtestcard1 */
+	/*End of randomtestcard2 */
 	printf("***** Summary results for: %s, %s *****\n", TESTNAME, CARDNAME);
 	printf("***** %d Test(s) Passed *****\n", testPassed);
 	printf("***** %d Test(s) Failed *****\n", testFailed);

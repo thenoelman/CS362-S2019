@@ -538,4 +538,20 @@ void noStateChangeVictoryKingdomTest(int *testPassed, int *testFailed, struct ga
 		*testFailed++;
 	}
 	printf("\n");
+
+	printf("Test 4aa: Test that the supply count of smithy matches\n");
+	printf("supply count before: smithy= %d\n", testG.supplyCount[smithy]);
+	printf("supply count after: smithy= %d\n", G.supplyCount[smithy]);
+	assert(testG.supplyCount[smithy] == G.supplyCount[smithy]);
+	if (testG.supplyCount[smithy] == G.supplyCount[smithy])
+	{
+		printf("+++++ TEST PASSED\n");
+		*testPassed++;
+	}
+	else
+	{
+		printf("----- TEST FAILED - supply count of smithy does not match\n");
+		*testFailed++;
+	}
+	printf("\n");
 }

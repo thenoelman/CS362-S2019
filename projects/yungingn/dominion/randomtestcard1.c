@@ -30,6 +30,7 @@ int main() {
 
 	//beginning
 	int numberOfRandomTests;
+	srand(time(NULL));
 	numberOfRandomTests = (rand() % 50) + 1;
 
 	printf("number of random tests executed: %d\n", numberOfRandomTests);

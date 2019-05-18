@@ -30,13 +30,14 @@ int main() {
 
 	//beginning
 	int numberOfRandomTests;
+	srand(time(NULL));
 	numberOfRandomTests = (rand() % 50) + 1;
 
 	printf("number of random tests executed: %d\n", numberOfRandomTests);
 
-	//int j;
-	//for (j = 0; j < numberOfRandomTests; j++)
-	//{
+	int j;
+	for (j = 0; j < numberOfRandomTests; j++)
+	{
 		//test drawCard with random decks
 		printf("Seed the Adventurer with random decks prior to playing the Adventurer\n");
 
@@ -221,7 +222,7 @@ int main() {
 			printf("----- TEST FAILED - cards in deck do not add up\n");
 			testFailed++;
 		}
-	//}
+	}
 
 	printf("\n");
 

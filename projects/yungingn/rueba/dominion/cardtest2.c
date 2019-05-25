@@ -85,7 +85,17 @@ int main() {
 	printf("\n");
 
 	/*Test 3  */
-	printf("Test 3: the 2 new treasure cards are in the player's hand\n");
+	printf("Test 3: No state change should occur for other players\n");
+
+	noStateChangeTest(&testPassed, &testFailed, G, testG, thisPlayer, smithy);
+
+	/*Test 4  */
+	printf("Test 4: No state change should occur to the victory card piles and kingdom card piles\n");
+
+	noStateChangeVictoryKingdomTest(&testPassed, &testFailed, G, testG, thisPlayer);
+
+	/*Test 5  */
+	printf("Test 5: the 2 new treasure cards are in the player's hand\n");
 
 	int i;
 	int coppersBefore = 0;
@@ -149,8 +159,8 @@ int main() {
 	//assert(totalCoinsBefore + 2 == totalCoinsAfter);
 	printf("\n");
 
-	/*Test 4  */
-	printf("Test 4: the other cards have been discarded\n");
+	/*Test 6  */
+	printf("Test 6: the other cards have been discarded\n");
 
 	printf("before adventurer- discardCount = %d\n", G.discardCount[thisPlayer]);
 

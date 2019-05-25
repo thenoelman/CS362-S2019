@@ -161,6 +161,21 @@ void noStateChangeTest(int *testPassed, int *testFailed, struct gameState G, str
 		*testFailed++;
 	}
 	printf("\n");
+
+	printf("Test 3g: Test that playedCardCount increases by one\n");
+	printf("this player- playedCards before = %d\n", G.playedCardCount);
+	printf("this player- playedCards after = %d\n", testG.playedCardCount);
+	if (G.playedCardCount + 1 == testG.playedCardCount)
+	{
+		printf("+++++ TEST PASSED\n");
+		*testPassed++;
+	}
+	else
+	{
+		printf("----- TEST FAILED - this player's playedCards do not match\n");
+		*testFailed++;
+	}
+	printf("\n");
 }
 
 void noStateChangeVictoryKingdomTest(int *testPassed, int *testFailed, struct gameState G, struct gameState testG,

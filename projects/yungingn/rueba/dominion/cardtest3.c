@@ -58,27 +58,29 @@ int main() {
 	printf("\n");
 
 	/*Test 2  */
-	printf("Test 2: Test that the player has gained 2 actions\n");
+	printf("Test 2: Test that the player has gained 1 buy\n");
 
-	printf("Number of actions before drawing the council_room: %d\n", G.numActions);
-	printf("Number of actions after drawing the council_room: %d\n", testG.numActions);
+	printf("Number of buys before drawing the council_room: %d\n", G.numBuys);
+	printf("Number of buys after drawing the council_room: %d\n", testG.numBuys);
 	//assert(G.numActions + 2 == testG.numActions);
 
-	if(G.numActions + 2 == testG.numActions)
+	if(G.numBuys + 1 == testG.numBuys)
 	{
 		printf("+++++ TEST PASSED\n");
 		testPassed++;
 	}
 	else
 	{
-	printf("----- TEST FAILED - drawing a council_room did not gain 2 actions\n");
+	printf("----- TEST FAILED - drawing a council_room did not gain 1 buy\n");
 	testFailed++;
 	}
+
+	printf("\n");
 
 	/*Test 3  */
 	printf("Test 3: No state change should occur for other players\n");
 
-	noStateChangeTest(&testPassed, &testFailed, G, testG, thisPlayer);
+	noStateChangeTest(&testPassed, &testFailed, G, testG, thisPlayer, council_room);
 
 	/*Test 4  */
 	printf("Test 4: No state change should occur to the victory card piles and kingdom card piles\n");

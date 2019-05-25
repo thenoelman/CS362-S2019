@@ -2,6 +2,6 @@
 #define _COMMONTESTLIBRARY_H
 
 void noStateChangeTest(int *testPassed, int *testFailed, struct gameState G, struct gameState testG,
-	int thisPlayer);
+	int thisPlayer, int card_played);
 
 #endif

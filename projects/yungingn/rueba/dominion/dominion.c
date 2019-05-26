@@ -710,6 +710,18 @@ int greatHallEffect(int currentPlayer, struct gameState *state, int handPos){
   discardCard(handPos, currentPlayer, state, 0);
   return 0;
 }
+int playVillageCard(int currentPlayer, struct gameState* state, int handPos) {
+	//+1 Card
+	drawCard(currentPlayer, state);
+
+	//+2 Actions
+	state->numActions = state->numActions + 1; //Bug: Only allows the player 1 extra action instead of 2.
+
+	//discard played card from hand
+	discardCard(handPos, currentPlayer, state, 0);
+
+	return 0;
+}
 
 int stewardEffect(int currentPlayer, struct gameState *state, int handPos, int choice1, int choice2, int choice3){
   if (choice1 == 1){
@@ -880,15 +892,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return smithyEffect(currentPlayer, state, handPos);
 
     case village:
-      //+1 Card
-      drawCard(currentPlayer, state);
-
-      //+2 Actions
-      state->numActions = state->numActions + 2;
-
-      //discard played card from hand
-      discardCard(handPos, currentPlayer, state, 0);
-      return 0;
+		return playVillageCard(currentPlayer, state, handPos);
 
     case baron:
       state->numBuys++;//Increase buys by 1!

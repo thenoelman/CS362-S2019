@@ -644,14 +644,15 @@ int getCost(int cardNumber)
 }
 
 int smithyEffect(int currentPlayer, struct gameState *state, int handPos){
-  //+3 Cards
-  for (int i = 0; i < 3; i++){
-    drawCard(currentPlayer, state);
-  }
-  //discard card from hand
-  discardCard(handPos, currentPlayer, state, 1);
+	//+3 Cards
+	int i = 0;
+	for (i = 0; i < 3; i++){
+	drawCard(currentPlayer, state);
+	}
+	//discard card from hand
+	discardCard(handPos, currentPlayer, state, 1);
 
-  return 0;
+	return 0;
 }
 
 int adventurerEffect(int currentPlayer,struct gameState *state, int handPos, int temphand[], int z){
@@ -678,25 +679,26 @@ int adventurerEffect(int currentPlayer,struct gameState *state, int handPos, int
 }
 
 int councilRoomEffect(int currentPlayer, struct gameState *state, int handPos){
-  //+4 Cards
-  for (int i = 0; i <= 4; i++){
-    drawCard(currentPlayer, state);
-  }
+	//+4 Cards
+	int i = 0;
+	for (i = 0; i <= 4; i++){
+	drawCard(currentPlayer, state);
+	}
 
-  //+1 Buy
-  state->numBuys++;
+	//+1 Buy
+	state->numBuys++;
 
-  //Each other player draws a card
-  for (int i = 0; i < state->numPlayers; i++) {
-    if ( i != currentPlayer )
-      {
-        drawCard(i, state);
-      }
-  }
+	//Each other player draws a card
+	for (i = 0; i < state->numPlayers; i++) {
+	if ( i != currentPlayer )
+		{
+		drawCard(i, state);
+		}
+	}
 
-  //put played card in played card pile
-  discardCard(handPos, currentPlayer, state, 0);
-  return 0;
+	//put played card in played card pile
+	discardCard(handPos, currentPlayer, state, 0);
+	return 0;
 }
 
 int greatHallEffect(int currentPlayer, struct gameState *state, int handPos){

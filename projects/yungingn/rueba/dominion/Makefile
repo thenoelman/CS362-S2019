@@ -44,6 +44,9 @@ unittestresults: cardtest1.c dominion.o rngs.o
 	gcc -o unittest2 unittest2.c -g  dominion.o rngs.o commonTestLibrary.o $(CFLAGS)
 	gcc -o unittest3 unittest3.c -g  dominion.o rngs.o commonTestLibrary.o $(CFLAGS)
 	gcc -o unittest4 unittest4.c -g  dominion.o rngs.o commonTestLibrary.o $(CFLAGS)
+	gcc -o randomtestcard1 randomtestcard1.c -g  dominion.o rngs.o commonTestLibrary.o $(CFLAGS)
+	gcc -o randomtestcard2 randomtestcard2.c -g  dominion.o rngs.o commonTestLibrary.o $(CFLAGS)
+	gcc -o randomtestadventurer randomtestadventurer.c -g dominion.o rngs.o commonTestLibrary.o $(CFLAGS)
 
 	./cardtest1 >> unittestresults.out
 	./cardtest2 >> unittestresults.out
@@ -58,6 +61,14 @@ unittestresults: cardtest1.c dominion.o rngs.o
 	echo "" >> unittestresults.out
 	echo "gcov results" >> unittestresults.out
 	echo "" >> unittestresults.out
+
+	./randomtestcard1 >> randomtestresults.out
+	./randomtestcard2 >> randomtestresults.out
+	./randomtestadventurer >> randomtestresults.out
+	echo "" >> randomtestresults.out
+
+	echo "Gcov Results" >> randomtestresults.out
+	gcov dominion.c -b >> randomtestresults.out
 	gcov dominion.c >> unittestresults.out
 
 player: player.c interface.o

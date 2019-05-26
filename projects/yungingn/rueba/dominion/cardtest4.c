@@ -51,11 +51,34 @@ int main() {
 	}
 	else
 	{
-		printf("----- TEST FAILED \n");
+		printf("----- TEST FAILED- handcount hasn't increased by 2 \n");
 		testFailed++;
 	}
-	/*assert((G.deckCount[thisPlayer] -1) == testG.deckCount[thisPlayer] &&
-		G.handCount[thisPlayer] == testG.handCount[thisPlayer]);*/
+
+	printf("\n");
+
+	/*Test 2  */
+	printf("Test 2: Play another steward and choose 2 coins\n");
+
+	int coinsBefore = testG.coins;
+
+	printf("this player- coins before = %d\n", testG.coins);
+
+	//play the steward
+	cardEffect(steward, 2, -1, -1, &testG, 0, 0);
+
+	printf("this player- coins after = %d\n", testG.coins);
+
+	if (coinsBefore +2 == testG.coins)
+	{
+		printf("+++++ TEST PASSED\n");
+		testPassed++;
+	}
+	else
+	{
+		printf("----- TEST FAILED- coins have not increased by 2 \n");
+		testFailed++;
+	}
 
 	printf("\n");
 

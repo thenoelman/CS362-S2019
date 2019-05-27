@@ -28,6 +28,33 @@ int main() {
 	printf("***** Test results for: %s *****\n", TESTNAME);
 	printf("***** Test card: %s *****\n\n", CARDNAME);
 
+	//increase the discardCount
+	G.discardCount[thisPlayer] = 10;
+
+	int i;
+
+	for (i = 0; i < G.discardCount[thisPlayer]; i ++)
+	{
+		G.discard[thisPlayer][i] = estate;//seed the discard pile
+	}	
+
+	printf("test- deckcount = %d\n", G.deckCount[thisPlayer]);
+
+	for (i = 0; i < G.deckCount[thisPlayer]; i++)
+	{
+		printf("card %d is %d\n", i, G.deck[thisPlayer][i]);	
+	}
+
+	printf("Add 100 gardens to the deck\n");
+	int x = 100;
+	int j;
+	G.deckCount[thisPlayer] = G.deckCount[thisPlayer] + x;
+	for (j = 0; j < x; j++)
+	{
+		G.deck[thisPlayer][j + 5] = 10;
+	}
+	printf("deckcount now is: %d\n", G.deckCount[thisPlayer]);
+
 	/*Test 1  */
 	printf("Test 1: Test that the player has drawn 2 treasure cards\n");
 
@@ -97,7 +124,6 @@ int main() {
 	/*Test 5  */
 	printf("Test 5: the 2 new treasure cards are in the player's hand\n");
 
-	int i;
 	int coppersBefore = 0;
 	int coppersAfter = 0;
 	int silversBefore = 0;

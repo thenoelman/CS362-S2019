@@ -38,6 +38,16 @@ protected void setUp() {
       }
    }
 
+   public void testUrlValidator() {
+	   long options =
+	            UrlValidator.ALLOW_2_SLASHES
+	                + UrlValidator.ALLOW_ALL_SCHEMES
+	                + UrlValidator.NO_FRAGMENTS;
+
+	   UrlValidator urlVal = new UrlValidator(null, null, options);
+	   assertTrue(urlVal.isValid("http://www.google.com"));
+   }
+
    public void testIsValid() {
         testIsValid(testUrlParts, UrlValidator.ALLOW_ALL_SCHEMES);
         setUp();

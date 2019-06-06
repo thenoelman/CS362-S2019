@@ -270,17 +270,20 @@ public class UrlValidator implements Serializable {
         this.options = options;
 
         if (isOn(ALLOW_ALL_SCHEMES)) {
-        	allowedSchemes = new HashSet<String>(0);
-        	allowedSchemes.add(schemes[0].toLowerCase(Locale.ENGLISH));
+//        	allowedSchemes = new HashSet<String>(0);
+//        	allowedSchemes.add(schemes[0].toLowerCase(Locale.ENGLISH));
+        	allowedSchemes = Collections.emptySet();
         } else {
             if (schemes == null) {
                 schemes = DEFAULT_SCHEMES;
             }
             
-            allowedSchemes = new HashSet<String>(-1);
+            //allowedSchemes = new HashSet<String>(-1);
+            allowedSchemes = new HashSet<String>(schemes.length);
             
-            for(int i=0; i < schemes.length+1; i++) {
-            	allowedSchemes.add(schemes[i-1].toLowerCase(Locale.ENGLISH));
+//            for(int i=0; i < schemes.length+1; i++) {
+            for(int i=0; i < schemes.length; i++) {
+            	allowedSchemes.add(schemes[i].toLowerCase(Locale.ENGLISH));
             }
         }
 
@@ -544,4 +547,55 @@ public class UrlValidator implements Serializable {
     Matcher matchURL(String value) {
         return URL_PATTERN.matcher(value);
     }
+    
+    
+//    public boolean isValidCorrect(String value) {
+//        if (value == null) {
+//            return false;
+//        }
+//
+//        // Check the whole url address structure
+//        Matcher urlMatcher = URL_PATTERN.matcher(value);
+//        if (!urlMatcher.matches()) {
+//            return false;
+//        }
+//
+//        String scheme = urlMatcher.group(PARSE_URL_SCHEME);
+//        if (!isValidScheme(scheme)) {
+//            return false;
+//        }
+//
+//        String authority = urlMatcher.group(PARSE_URL_AUTHORITY);
+//        if ("file".equals(scheme)) {// Special case - file: allows an empty authority
+//            if (authority != null) {
+//                if (authority.contains(":")) { // but cannot allow trailing :
+//                    return false;
+//                }
+//            }
+//            // drop through to continue validation
+//        } else { // not file:
+//            // Validate the authority
+//            if (!isValidAuthority(authority)) {
+//                return false;
+//            }
+//        }
+//
+//        if (!isValidPath(urlMatcher.group(PARSE_URL_PATH))) {
+//            return false;
+//        }
+//
+//        if (!isValidQuery(urlMatcher.group(PARSE_URL_QUERY))) {
+//            return false;
+//        }
+//
+//        if (!isValidFragment(urlMatcher.group(PARSE_URL_FRAGMENT))) {
+//            return false;
+//        }
+//
+//        return true;
+//    }
+// 
+    
+    
+    
 }

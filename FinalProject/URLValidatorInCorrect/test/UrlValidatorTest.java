@@ -62,7 +62,7 @@ protected void setUp() {
 	   input.close();
    }
    
-   public void testIsValidPositive102() throws Exception{
+   public void testIsValidNegative102() throws Exception{
 	   UrlValidator urlValidator = new UrlValidator();
 	   String fileName = "badUrls.txt";
 	   Scanner input = new Scanner(new File(fileName));

@@ -66,7 +66,6 @@ protected void setUp() {
 	   UrlValidator urlValidator = new UrlValidator();
 	   String fileName = "badUrls.txt";
 	   Scanner input = new Scanner(new File(fileName));
-	   //assertFalse(urlValidator.isValid("./"));
 	   
 	   String url = "";
 	   while(input.hasNext()) {

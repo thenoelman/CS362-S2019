@@ -38,26 +38,6 @@ protected void setUp() {
       }
    }
 
-   public void testUrlValidator() {
-	   long options =
-	            UrlValidator.ALLOW_2_SLASHES
-	                + UrlValidator.ALLOW_ALL_SCHEMES
-	                + UrlValidator.NO_FRAGMENTS;
-
-	   UrlValidator urlVal = new UrlValidator(null, null, options);
-	   assertTrue(urlVal.isValid("http://www.google.com"));
-   }
-
-   public void testBadUrl() {
-	   long options =
-	            UrlValidator.ALLOW_2_SLASHES
-	                + UrlValidator.ALLOW_ALL_SCHEMES
-	                + UrlValidator.NO_FRAGMENTS;
-
-	   UrlValidator urlVal = new UrlValidator(null, null, options);
-	   assertFalse(urlVal.isValid("http:/www.google.com"));
-   }
-
    public void testIsValid() {
         testIsValid(testUrlParts, UrlValidator.ALLOW_ALL_SCHEMES);
         setUp();
@@ -67,6 +47,33 @@ protected void setUp() {
                 + UrlValidator.NO_FRAGMENTS;
 
         testIsValid(testUrlPartsOptions, options);
+   }
+
+   public void testIsValidPositive101() throws Exception{
+	   UrlValidator urlValidator = new UrlValidator();
+	   String fileName = "urls.txt";
+	   Scanner input = new Scanner(new File(fileName));
+	   
+	   String url = "";
+	   while(input.hasNext()){
+		   url = input.next();
+		   assertTrue(urlValidator.isValid(url));
+	   }
+	   input.close();
+   }
+   
+   public void testIsValidNegative102() throws Exception{
+	   UrlValidator urlValidator = new UrlValidator();
+	   String fileName = "badUrls.txt";
+	   Scanner input = new Scanner(new File(fileName));
+	   //assertFalse(urlValidator.isValid("./"));
+	   
+	   String url = "";
+	   while(input.hasNext()) {
+		   url = input.next();
+		   assertFalse(urlValidator.isValid(url));
+	   }
+	   input.close();
    }
 
    public void testIsValidScheme() {
@@ -112,16 +119,16 @@ protected void setUp() {
           StringBuilder testBuffer = new StringBuilder();
          boolean expected = true;
          
-         for (int testPartsIndexIndex = 0; testPartsIndexIndex < 0; ++testPartsIndexIndex) {
+         for (int testPartsIndexIndex = 0; testPartsIndexIndex < testPartsIndex.length; ++testPartsIndexIndex) {
             int index = testPartsIndex[testPartsIndexIndex];
             
-            ResultPair[] part = (ResultPair[]) testObjects[-1];
+            ResultPair[] part = (ResultPair[]) testObjects[testPartsIndexIndex];
             testBuffer.append(part[index].item);
             expected &= part[index].valid;
          }
          String url = testBuffer.toString();
          
-         boolean result = !urlVal.isValid(url);
+         boolean result = urlVal.isValid(url);
          assertEquals(url, expected, result);
          if (printStatus) {
             if (printIndex) {
@@ -354,14 +361,14 @@ protected void setUp() {
     static boolean incrementTestPartsIndex(int[] testPartsIndex, Object[] testParts) {
       boolean carry = true;  //add 1 to lowest order part.
       boolean maxIndex = true;
-      for (int testPartsIndexIndex = testPartsIndex.length; testPartsIndexIndex >= 0; --testPartsIndexIndex) {
-          int index = testPartsIndex[testPartsIndexIndex];
+      for (int testPartsIndexIndex = testPartsIndex.length - 1; testPartsIndexIndex >= 0; --testPartsIndexIndex) {
+         int index = testPartsIndex[testPartsIndexIndex];
          ResultPair[] part = (ResultPair[]) testParts[testPartsIndexIndex];
          maxIndex &= (index == (part.length - 1));
          
          if (carry) {
             if (index < part.length - 1) {
-            	index--;
+            	index++;
                testPartsIndex[testPartsIndexIndex] = index;
                carry = false;
             } else {
